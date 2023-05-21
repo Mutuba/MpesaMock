@@ -5,7 +5,7 @@ class NotificationsController < ApplicationController
   before_action :set_notification, only: %i[mark_as_read]
 
   def index
-    @notifications = Notification.where(recipient: current_user, read_at: nil)
+    @notifications = Notification.where(recipient: current_user, read_at: nil).order(created_at: :desc)
   end
 
   def mark_as_read

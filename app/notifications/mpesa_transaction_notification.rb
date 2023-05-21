@@ -6,21 +6,17 @@
 # MpesaTransactionNotification.with(post: @post).deliver(current_user)
 
 class MpesaTransactionNotification < Noticed::Base
-  # Add your delivery methods
   deliver_by :database
 
   param :mpesa_transaction
 
   def message
-    params[:mpesa_transaction].amount
+    "#{params[:mpesa_transaction].transaction_code} Confirmed. Ksh #{params[:mpesa_transaction].amount} sent to #{params[:mpesa_transaction].receiver.phone_number}."
   end
 
   def url
-    binding.pry
     mpesa_transaction_details_path(params[:mpesa_transaction])
   end
 
   # deliver_by :email, mailer: "UserMailer"
-  # deliver_by :slack
-  # deliver_by :custom, class: "MyDeliveryMethod"
 end

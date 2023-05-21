@@ -19,5 +19,4 @@ Rails.application.routes.draw do
   post 'mpesa_transactions/reverse', to: 'mpesa_transactions#reverse'
   resources :notifications, only: [:index]
   post 'notifications/mark_as_read', to: 'notifications#mark_as_read'
-
 end
