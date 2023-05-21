@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# class NotificationsController
 class NotificationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_notification, only: %i[mark_as_read]

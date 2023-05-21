@@ -5,6 +5,7 @@
 # MpesaTransactionNotification.with(post: @post).deliver_later(current_user)
 # MpesaTransactionNotification.with(post: @post).deliver(current_user)
 
+# class MpesaTransactionNotification
 class MpesaTransactionNotification < Noticed::Base
   deliver_by :database
 

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# class MpesaTransactionsController
 class MpesaTransactionsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_mpesa_account
@@ -29,7 +30,7 @@ class MpesaTransactionsController < ApplicationController
       receiver: current_user,
       mpesa_account: @mpesa_account
     )
-   
+
     respond_to do |format|
       if result.success
         format.html do

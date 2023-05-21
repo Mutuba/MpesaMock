@@ -1,5 +1,7 @@
-class DepositMpesaTransactionService < ApplicationService
+# frozen_string_literal: true
 
+# class DepositMpesaTransactionService
+class DepositMpesaTransactionService < ApplicationService
   attr_reader :amount, :receiver, :sender, :mpesa_account, :success, :error
 
   def initialize(params)
@@ -10,18 +12,16 @@ class DepositMpesaTransactionService < ApplicationService
   end
 
   def call
-    begin
-      ActiveRecord::Base.transaction do
-        # Create MpesaTransaction
-        transaction = MpesaTransaction.create!(amount: @mount, sender: @sender, receiver: @receiver)
-        # Update mpesa balance
-        existing_balance = @mpesa_account.available_balance.to_f
-        new_balance = existing_balance + transaction.amount.to_f
-        mpesa_account.update!(available_balance: new_balance)
-        OpenStruct.new(success: true, error: false)
+    ActiveRecord::Base.transaction do
+      # Create MpesaTransaction
+      transaction = MpesaTransaction.create!(amount: @mount, sender: @sender, receiver: @receiver)
+      # Update mpesa balance
+      existing_balance = @mpesa_account.available_balance.to_f
+      new_balance = existing_balance + transaction.amount.to_f
+      mpesa_account.update!(available_balance: new_balance)
+      OpenStruct.new(success: true, error: false)
     rescue StandardError => e
       OpenStruct.new(success: false, error: e.message)
     end
   end
-end
 end
