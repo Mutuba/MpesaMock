@@ -3,6 +3,7 @@
 class MpesaTransactionsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_mpesa_account
+  before_action :set_mpesa_transaction
 
   def index
     # @mpesa_transactions = current_user.mpesa_transactions.order(updated_at: :desc).page(params[:page])
@@ -10,14 +11,11 @@ class MpesaTransactionsController < ApplicationController
   end
 
   def details
-    binding.pry
-
     render template: 'mpesa_transactions/show'
   end
 
   # GET /resource/top_up
   def top_up
-    @mpesa_transaction = MpesaTransaction.new
     render template: 'mpesa_transactions/top_up', locals: {
       mpesa_account: @mpesa_account, mpesa_transaction: @mpesa_transaction
     }
@@ -25,19 +23,24 @@ class MpesaTransactionsController < ApplicationController
 
   # GET /resource/deposit
   def deposit
-    transaction = MpesaTransaction.create!(
+    result = DepositMpesaTransactionService.call(
       amount: mpesa_top_up_params[:amount],
       sender: current_user,
-      receiver: current_user
+      receiver: current_user,
+      mpesa_account: @mpesa_account
     )
-
-    existing_balance = @mpesa_account.available_balance.to_f
-    new_balance = existing_balance + transaction.amount.to_f
+   
     respond_to do |format|
-      if current_user.mpesa_account.update!(available_balance: new_balance)
-        format.html { redirect_to mpesa_transactions_top_up_url, notice: 'Top successful' }
+      if result.success
+        format.html do
+          redirect_to mpesa_transactions_top_up_url,
+                      notice: 'Top up successful'
+        end
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html do
+          redirect_to mpesa_transactions_top_up_url,
+                      alert: result.error
+        end
       end
     end
   end
@@ -52,6 +55,10 @@ class MpesaTransactionsController < ApplicationController
 
   def set_mpesa_account
     @mpesa_account = current_user&.mpesa_account
+  end
+
+  def set_mpesa_transaction
+    @mpesa_transaction = MpesaTransaction.new
   end
 
   def mpesa_top_up_params

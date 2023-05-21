@@ -3,6 +3,8 @@
 # ApplicationController
 class ApplicationController < ActionController::Base
   include Devise::Controllers::Helpers
+  
+  add_flash_types :danger, :info, :warning, :success, :messages
 
   protect_from_forgery with: :null_session
   before_action :configure_permitted_parameters, if: :devise_controller?
