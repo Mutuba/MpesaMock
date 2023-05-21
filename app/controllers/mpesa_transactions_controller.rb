@@ -30,9 +30,9 @@ class MpesaTransactionsController < ApplicationController
       receiver: current_user,
       mpesa_account: @mpesa_account
     )
-
     respond_to do |format|
-      if result.success
+      
+      if result&.success
         format.html do
           redirect_to mpesa_transactions_top_up_url,
                       notice: 'Top up successful'
@@ -40,7 +40,7 @@ class MpesaTransactionsController < ApplicationController
       else
         format.html do
           redirect_to mpesa_transactions_top_up_url,
-                      alert: result.error
+                      alert: result&.error
         end
       end
     end
