@@ -1,0 +1,18 @@
+<li>
+  <div>
+    <p class="text-gray-700">
+      <%= notification.to_notification.message %>
+    </p>
+    <div class="flex justify-between mt-1 text-gray-500 text-sm space-x-4">
+      <p>
+        Sent at: <%= notification.created_at.strftime("%Y-%d-%m %H:%M:%S") %>
+      </p>
+      <p>
+        Status: <%= notification.read? ? "Read" : "Unread" %>
+      </p>
+      <p>
+        <%= button_to "Mark as read", notifications_mark_as_read_path(:id => notification.id), class: "btn btn-primary" %>
+      </p>
+    </div>
+  </div>
+</li>

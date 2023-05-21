@@ -1,0 +1,13 @@
+<div class="container d-flex align-items-center justify-content-center">
+  <div class="upload-form">
+
+
+  <h5>
+    Current Balance: 
+    Ksh. <%= mpesa_account.available_balance.to_f %>
+  </h5>
+
+   <%= render @mpesa_transaction %>
+   
+</div>
+</div>

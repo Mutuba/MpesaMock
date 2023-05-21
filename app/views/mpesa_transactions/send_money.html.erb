@@ -1,0 +1,27 @@
+<div class="container d-flex align-items-center justify-content-center">
+  <div class="upload-form">
+
+    <%= form_for @mpesa_transaction, url: mpesa_account_top_up_path do |f| %>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Current Balance</label>
+        <%= f.text_field :available_balance, autofocus: true, :readonly => true, class: 'form-control-plaintext' %>
+
+
+      </div>
+      <br/>
+      <br/>
+      <div class="actions">
+        <%= f.button "Top Up", type: :submit, class: "btn btn-primary" %>
+      </div>
+      <br/>
+      <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+      </div>
+
+      </div>
+  <% end %>
+
+</div>
+</div>
+</div>

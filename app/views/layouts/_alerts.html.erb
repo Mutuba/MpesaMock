@@ -1,0 +1,11 @@
+<div class="container d-flex align-items-center justify-content-center">
+  <div>
+    <% if notice %>
+      <p class="notice" style="color: green"><%= notice %></p>
+    <% elsif alert %>
+      <div  style="color: green" class="alert alert-primary" role="alert">
+        <%= alert %>
+      </div>
+    <% end %>
+  </div>
+</div>
