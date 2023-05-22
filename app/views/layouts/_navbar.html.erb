@@ -16,13 +16,13 @@
         <% end %>
         <% if current_user %>
           <li class="nav-item">
-            <%= link_to "Top Up", get_started_path, class:"nav-link" %>
+            <%= link_to "Top Up", mpesa_transactions_top_up_path, class:"nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Send Money", get_started_path, class:"nav-link" %>
+            <%= link_to "Send Money", contacts_path, class:"nav-link" %>
           </li>
           <li class="nav-item" id="upload-url-item">
-            <%= link_to "View Transactions", get_started_path, class:"nav-link" %>
+            <%= link_to "View Transactions", mpesa_transactions_path, class:"nav-link" %>
           </li>
         <% end %>
 

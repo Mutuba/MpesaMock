@@ -42,4 +42,16 @@ class User < ApplicationRecord
   def notifications_count
     Notification.where(recipient: self, read_at: nil).size
   end
+
+  def total_transactions_value
+    transaction_total = MpesaTransaction
+      .where('sender_id = ? OR receiver_id = ?', id, id)
+      .sum(:amount)
+
+    transaction_total
+  end
+
+  def all_transactions
+    MpesaTransaction.where('sender_id = :user_id OR receiver_id = :user_id', user_id: id)
+  end
 end

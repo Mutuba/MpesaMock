@@ -8,8 +8,7 @@ class MpesaTransactionsController < ApplicationController
   before_action :set_send_money_receiver_account, only: [:transfer]
 
   def index
-    # @mpesa_transactions = current_user.mpesa_transactions.order(updated_at: :desc).page(params[:page])
-    # render template: 'batch_metrics/batch_urls', locals: { urls: @urls, batch: @batch }
+    @mpesa_transactions = current_user.all_transactions.order(updated_at: :desc).page(params[:page])
   end
 
   def details

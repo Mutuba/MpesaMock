@@ -5,9 +5,9 @@
         <h5 class="card-title">Contact Details</h5>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item"><%= @contact.phone_number %></li>
-        <li class="list-group-item"><%= @contact.email %></li>
-        <% if @contact.full_name %>
+        <li class="list-group-item"><%= @contact&.phone_number %></li>
+        <li class="list-group-item"><%= @contact&.email %></li>
+        <% if @contact&.full_name %>
           <li class="list-group-item"><%= @contact.full_name %></li>
         <% end %>
         <li class="list-group-item">

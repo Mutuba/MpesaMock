@@ -1,0 +1,25 @@
+<div class="container">
+  <div id="<%= dom_id mpesa_transaction %>">
+    <div class="card">
+      <div class="card-body">
+        <p>
+          <strong>Amount:</strong>
+          <%= mpesa_transaction.amount.to_s %>
+        </p>
+        <p>
+          <strong>Sender Phone Number:</strong>
+          <%= mpesa_transaction.sender.phone_number %>
+        </p>
+        <p>
+          <strong>Receiver Phone Number</strong>
+          <%= mpesa_transaction.sender.phone_number %>
+        </p>
+        <p>
+          <strong>Transaction ref code</strong>
+          <%= mpesa_transaction.transaction_code %>
+        </p>
+      </div>
+    </div>
+    <br/>
+  </div>
+</div>

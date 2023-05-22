@@ -1,0 +1,22 @@
+
+
+<div class="container d-flex align-items-center justify-content-center">
+  <div>
+    <%  if @mpesa_transactions.size == 0 %>
+      <br/>
+      <br/>
+      <div class="container d-flex align-items-center justify-content-center">
+        <div class="alert alert-primary" role="alert">
+          Sorry, not sure if this is what you expected, but you do not have mpesa_transactions yet!
+        </div>
+      </div>
+    <% else%>
+      <% @mpesa_transactions.each do |mpesa_transaction| %>
+        <%= render partial: 'mpesa_transactions/transaction', locals: { mpesa_transaction: mpesa_transaction } %>
+      <% end %>
+      <%= link_to_prev_page @mpesa_transactions, 'Previous Page', class: "btn btn-primary" %>
+      <%= link_to_next_page @mpesa_transactions, 'Next Page', class: "btn btn-primary" %>
+      <br/>
+    <%end%>
+  </div>
+</div>
