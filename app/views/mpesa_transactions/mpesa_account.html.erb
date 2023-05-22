@@ -3,7 +3,7 @@
     <div class="container">
       <div class="card">
         <div class="card-header">
-          Welcome <%= current_user.full_name %> to your Mpesa Account
+          Welcome <%= current_user&.full_name %> to your Mpesa Account
         </div>
         <div class="card-body">
           <br/>
@@ -17,23 +17,24 @@
       <br/>
       <div class="row">
         <div class="col-sm-6 mb-3 mb-sm-0">
-          <div class="card text-center">
+          <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Self deposit</h5>
-                <%= link_to "Proceed", mpesa_transactions_top_up_path, class: "btn btn-primary"%>
+              <h5 class="card-title">Special title treatment</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
           </div>
         </div>
-        <div class="col-sm-6 mb-3 mb-sm-0">
-          <div class="card text-center">
+        <div class="col-sm-6">
+          <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Send money</h5>
-                <%= link_to "Proceed", contacts_path, class: "btn btn-primary"%>
+              <h5 class="card-title">Special title treatment</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
           </div>
         </div>
       </div>
-      
 
     </div>
     </div>
