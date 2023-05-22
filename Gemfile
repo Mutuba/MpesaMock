@@ -85,4 +85,3 @@ end
 
 gem 'noticed', '~> 1.6'
 gem 'pg_search'
-

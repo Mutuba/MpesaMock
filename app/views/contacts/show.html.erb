@@ -1,3 +1,19 @@
-<%= turbo_frame_tag 'users' do %>
-<h1> Fuck you </h1>
-<% end %>
+<div class="container d-flex align-items-center justify-content-center">
+  <div>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Contact Details</h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><%= @contact.phone_number %></li>
+        <li class="list-group-item"><%= @contact.email %></li>
+        <% if @contact.full_name %>
+          <li class="list-group-item"><%= @contact.full_name %></li>
+        <% end %>
+        <li class="list-group-item">
+          <%= link_to "Send money to this contact", mpesa_transactions_transfer_path(id: @contact.id), class: "btn btn-primary" %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

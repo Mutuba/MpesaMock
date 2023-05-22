@@ -2,8 +2,8 @@
 
 require 'active_support/core_ext/integer/time'
 Rails.application.configure do
-  config.action_controller.default_url_options = {host: "localhost", port: 3000}
-  config.action_mailer.default_url_options = {host: "localhost", port: 3000}
+  config.action_controller.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   config.session_store :cache_store
 

@@ -3,12 +3,11 @@
 # MpesaUsersController
 class ContactsController < ApplicationController
   before_action :authenticate_user!
-
+  before_action :set_contact, :set_mpesa_transaction, only: [:show]
 
   def index
-    @users = User.all
+    @users = User.where.not(id: current_user.id)
   end
-
 
   def search
     @users = if params[:query].present?
@@ -20,8 +19,15 @@ class ContactsController < ApplicationController
     render template: 'contacts/search', locals: { users: @users }
   end
 
-  
-  def mutuba
-    render template: 'contacts/mutuba'
+  def show; end
+
+  private
+
+  def set_contact
+    @contact = User.find_by(id: params[:id])
+  end
+
+  def set_mpesa_transaction
+    @mpesa_transaction = MpesaTransaction.new
   end
 end
