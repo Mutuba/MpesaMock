@@ -83,9 +83,7 @@ GEM
       redis (>= 1.0, < 6)
     builder (3.2.4)
     byebug (11.1.3)
-    cable_ready (5.0.0.pre8)
-      rails (>= 5.2)
-      thread-local (>= 1.1.0)
+    choice (0.2.0)
     coderay (1.1.3)
     commonjs (0.2.7)
     concurrent-ruby (1.2.2)
@@ -204,8 +202,6 @@ GEM
     raabro (1.4.0)
     racc (1.6.2)
     rack (2.2.7)
-    rack-proxy (0.7.6)
-      rack
     rack-test (2.1.0)
       rack (>= 1.3)
     rails (7.0.4.3)
@@ -225,6 +221,11 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
+    rails-erd (1.7.2)
+      activerecord (>= 4.2)
+      activesupport (>= 4.2)
+      choice (~> 0.2.0)
+      ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.5.0)
       loofah (~> 2.19, >= 2.19.1)
     railties (7.0.4.3)
@@ -262,10 +263,11 @@ GEM
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 0.90.0, < 2.0)
+    ruby-graphviz (1.2.5)
+      rexml
     ruby-progressbar (1.13.0)
     rufus-scheduler (3.8.2)
       fugit (~> 1.1, >= 1.1.6)
-    semantic_range (3.0.0)
     sidekiq (7.1.0)
       concurrent-ruby (< 2)
       connection_pool (>= 2.3.0)
@@ -289,14 +291,7 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
-    stimulus_reflex (3.5.0.pre8)
-      cable_ready (= 5.0.0.pre8)
-      nokogiri
-      rack
-      rails (>= 5.2)
-      redis
     thor (1.2.2)
-    thread-local (1.1.0)
     tilt (2.1.0)
     timeout (0.3.2)
     turbo-rails (1.4.0)
@@ -324,11 +319,6 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webpacker (5.4.4)
-      activesupport (>= 5.2)
-      rack-proxy (>= 0.6.1)
-      railties (>= 5.2)
-      semantic_range (>= 2.3.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -354,6 +344,7 @@ DEPENDENCIES
   pry (~> 0.13.1)
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
+  rails-erd
   redis (~> 4.0)
   rubocop (~> 0.77)
   rubocop-rails (~> 2.3)
@@ -362,13 +353,11 @@ DEPENDENCIES
   sidekiq-unique-jobs
   sprockets-rails
   stimulus-rails
-  stimulus_reflex (= 3.5.0.pre8)
   turbo-rails
   twitter-bootstrap-rails
   tzinfo-data
   unicorn (~> 6.1.0)
   web-console
-  webpacker (~> 5.4.3)
 
 RUBY VERSION
    ruby 3.1.0p0

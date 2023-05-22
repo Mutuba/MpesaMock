@@ -1,5 +1,28 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: mpesa_transactions
+#
+#  id               :uuid             not null, primary key
+#  amount           :decimal(8, 2)    default(0.0), not null
+#  complete         :boolean
+#  transaction_code :string
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  receiver_id      :uuid
+#  sender_id        :uuid
+#
+# Indexes
+#
+#  index_mpesa_transactions_on_receiver_id  (receiver_id)
+#  index_mpesa_transactions_on_sender_id    (sender_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (receiver_id => users.id)
+#  fk_rails_...  (sender_id => users.id)
+#
 # class MpesaTransaction
 class MpesaTransaction < ApplicationRecord
   belongs_to :sender, class_name: 'User'
