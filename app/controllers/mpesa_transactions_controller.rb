@@ -31,7 +31,6 @@ class MpesaTransactionsController < ApplicationController
       mpesa_account: @mpesa_account
     )
     respond_to do |format|
-      
       if result&.success
         format.html do
           redirect_to mpesa_transactions_top_up_url,
@@ -46,8 +45,25 @@ class MpesaTransactionsController < ApplicationController
     end
   end
 
-  # POST /resource
-  def send_money; end
+  # # POST /resource
+  # def send_money_new
+  #   render template: 'mpesa_transactions/send_money_new', locals: { user: User.new }
+  # end
+
+  #  def search
+
+  #   binding.pry
+
+  #   if params[:query].present?
+  #     @users = User.where("first_name LIKE ?", "%#{params[:query]}%")
+  #   else
+  #     @users = User.all
+  #   end
+  #  end
+
+  def send_money
+    # to be implemented
+  end
 
   # GET /resource/reverse
   def reverse; end

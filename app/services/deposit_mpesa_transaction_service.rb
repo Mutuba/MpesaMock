@@ -13,7 +13,7 @@ class DepositMpesaTransactionService < ApplicationService
 
   def call
     ActiveRecord::Base.transaction do
-      # Create MpesaTransaction       
+      # Create MpesaTransaction
       mpesa_transaction = MpesaTransaction.create!(amount: @amount, sender: @sender, receiver: @receiver)
       # Update mpesa balance
       existing_balance = @mpesa_account.available_balance.to_f

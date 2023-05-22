@@ -1,0 +1,29 @@
+<div class="container d-flex align-items-center justify-content-center">
+  <div>
+    <h1>Search</h1>
+
+    <%= form_tag(contacts_search_path, method: :get) do %>
+      <%= text_field_tag :query, params[:query], placeholder: 'Search term...' %>
+      <%= submit_tag 'Search' %>
+    <% end %>
+    <br/>
+    <div class="mb-3">
+      <% if @users.present? %>
+        <h2>Contacts</h2>
+        <% @users.each do |user| %>
+          <ul class="list-group">
+            <li class="list-group-item"> 
+              <div id="<%= user.id %>">
+                <p class="">
+                  <%= link_to user.phone_number, contacts_mutuba_path(id: user.id), class: "" %>
+                </p>
+              </div>
+            </li>
+          </ul>
+        <% end %>
+      <% else %>
+        <p>No contacts yet.</p>
+      <% end %>
+    </div>
+  </div>
+</div>

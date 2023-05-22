@@ -1,0 +1,18 @@
+
+<div class="container d-flex align-items-center justify-content-center">
+  <div>
+    <%= turbo_frame_tag 'users' do %>
+
+    <%= form_with(url: mpesa_transactions_search_path, method: :get, data: {turbo_frame: "users"}) do |form| %>
+        <div class="mb-3 ">
+            <%= form.text_field :query, placeholder: 'Search term by name/email/phone number', class: 'form-control' %>
+        </div>    
+        <%= form.submit 'Search', class: 'btn btn-primary' %>
+    <% end %>
+    <% end %>
+
+    <div class="my-6">
+        <h1>Mutuba </h1>
+    </div>
+</div>
+</div>

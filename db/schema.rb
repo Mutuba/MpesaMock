@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_521_060_100) do
+ActiveRecord::Schema[7.0].define(version: 20_230_521_131_735) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -46,6 +46,15 @@ ActiveRecord::Schema[7.0].define(version: 20_230_521_060_100) do
     t.datetime 'updated_at', null: false
     t.index ['read_at'], name: 'index_notifications_on_read_at'
     t.index %w[recipient_type recipient_id], name: 'index_notifications_on_recipient'
+  end
+
+  create_table 'pg_search_documents', force: :cascade do |t|
+    t.text 'content'
+    t.string 'searchable_type'
+    t.bigint 'searchable_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index %w[searchable_type searchable_id], name: 'index_pg_search_documents_on_searchable'
   end
 
   create_table 'users', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|

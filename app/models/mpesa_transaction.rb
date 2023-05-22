@@ -15,13 +15,14 @@ class MpesaTransaction < ApplicationRecord
   validates :amount, numericality: { in: 1..300_000, only_integer: false, message: '%{value} must be between 1 and 300' }
 
   def notify_sender
-    return if self.complete.nil?
+    return if complete.nil?
+
     MpesaTransactionNotification.with(mpesa_transaction: self).deliver_later(sender)
   end
 
   def notify_receiver
     return if sender.id == receiver.id
-    return if self.complete.nil?
+    return if complete.nil?
 
     MpesaTransactionNotification.with(mpesa_transaction: self).deliver_later(receiver)
   end

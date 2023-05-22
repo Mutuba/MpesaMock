@@ -15,8 +15,13 @@ Rails.application.routes.draw do
   get 'mpesa_transaction/details', to: 'mpesa_transactions#details'
   get 'mpesa_transactions/top_up', to: 'mpesa_transactions#top_up'
   post 'mpesa_transactions/deposit', to: 'mpesa_transactions#deposit'
+  # get 'mpesa_transactions/send_money_new', to: 'mpesa_transactions#send_money_new'
+  # get 'mpesa_transactions/search', to: 'mpesa_transactions#search'
   post 'mpesa_transactions/send_money', to: 'mpesa_transactions#send_money'
   post 'mpesa_transactions/reverse', to: 'mpesa_transactions#reverse'
   resources :notifications, only: [:index]
   post 'notifications/mark_as_read', to: 'notifications#mark_as_read'
+  resources :contacts, only: %i[index]
+  get 'contacts/search', to: 'contacts#search'
+  get 'contacts/mutuba', to: 'contacts#mutuba'
 end
