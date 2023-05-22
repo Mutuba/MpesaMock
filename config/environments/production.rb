@@ -26,6 +26,7 @@ Rails.application.configure do
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
   config.secret_key_base = ENV['SECRET_KEY_BASE']
+  config.require_master_key = true
 
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
