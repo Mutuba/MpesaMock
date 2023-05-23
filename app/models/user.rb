@@ -66,8 +66,8 @@ class User < ApplicationRecord
 
   def total_transactions_value
     transaction_total = MpesaTransaction
-      .where('sender_id = ? OR receiver_id = ?', id, id)
-      .sum(:amount)
+                        .where('sender_id = ? OR receiver_id = ?', id, id)
+                        .sum(:amount)
 
     transaction_total
   end

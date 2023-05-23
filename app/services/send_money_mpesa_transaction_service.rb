@@ -8,16 +8,15 @@ class SendMoneyMpesaTransactionService < ApplicationService
     @amount = params[:amount].to_i
     @receiver = params[:receiver]
     @sender = params[:sender]
+    @sender_account = params[:sender]&.mpesa_account
+    @receiver_account = params[:receiver]&.mpesa_account
   end
 
   def call
     ActiveRecord::Base.transaction do
-      # Create MpesaTransaction
-      sender_account = sender&.mpesa_account
-      receiver_account = receiver&.mpesa_account
-
       validate_sender_balance
 
+      # Create MpesaTransaction
       mpesa_transaction = create_transaction
       update_sender_balance(mpesa_transaction)
       update_receiver_balance(mpesa_transaction)
@@ -33,9 +32,8 @@ class SendMoneyMpesaTransactionService < ApplicationService
   private
 
   def validate_sender_balance
-    raise StandardError, 'Insufficient funds to complete transaction' if sender_account.nil? ||
-                                                                       sender_account.available_balance.to_i.zero? ||
-                                                                       @amount > sender_account.available_balance.to_i
+    raise StandardError, 'Insufficient funds to complete transaction' if (@sender_account.available_balance.to_i.zero? ||
+      @amount > @sender_account.available_balance.to_i)
   end
 
   def create_transaction
@@ -43,11 +41,11 @@ class SendMoneyMpesaTransactionService < ApplicationService
   end
 
   def update_sender_balance(transaction)
-    sender_account.update!(available_balance: sender_account.available_balance.to_f - transaction.amount.to_f)
+    @sender_account.update!(available_balance: @sender_account.available_balance.to_f - transaction.amount.to_f)
   end
 
   def update_receiver_balance(transaction)
-    receiver_account.update!(available_balance: receiver_account.available_balance.to_f + transaction.amount.to_f)
+    @receiver_account.update!(available_balance: @receiver_account.available_balance.to_f + transaction.amount.to_f)
   end
 
   def mark_transaction_completed(transaction)
