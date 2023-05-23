@@ -8,7 +8,6 @@ class HomeController < ApplicationController
   def index; end
 
   def show
-    render 'errors/404', status: :not_found if @mpesa_account.nil?
     render template: 'mpesa_transactions/mpesa_account', locals: {
       current_user: current_user, mpesa_account: @mpesa_account
     }
