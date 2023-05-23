@@ -64,17 +64,19 @@ Registration page
 <img width="718" alt="Screenshot 2022-09-28 at 15 17 41" src="https://user-images.githubusercontent.com/39365725/192776509-1d621cea-8f1d-46e5-9b49-71058657a51b.png">
 
 Home page
+<img width="717" alt="Screenshot 2023-05-23 at 09 25 16" src="https://github.com/Mutuba/MpesaMock/assets/39365725/743a02b0-d9b9-42e8-97ff-9fad4e529731">
 
-<img width="718" alt="Screenshot 2022-09-28 at 15 17 41" src="https://user-images.githubusercontent.com/39365725/192776509-1d621cea-8f1d-46e5-9b49-71058657a51b.png">
+
 
 Top account page
 
 <img width="1434" alt="Screenshot 2023-05-23 at 09 20 04" src="https://github.com/Mutuba/MpesaMock/assets/39365725/a7e0a417-361f-4df3-8b6d-38f75d6e828d">
 
 
-Send money page
+Send money contact search page
 
-<img width="1432" alt="Screenshot 2022-09-28 at 15 19 49" src="https://user-images.githubusercontent.com/39365725/192776929-223fb1ea-b6d2-4809-934f-a2ee897ef069.png">
+<img width="1430" alt="Screenshot 2023-05-23 at 09 24 07" src="https://github.com/Mutuba/MpesaMock/assets/39365725/a35aff95-8046-416d-a744-b44dc17de58c">
+
 
 All transactions page
 
