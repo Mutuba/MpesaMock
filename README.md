@@ -78,3 +78,7 @@ Send money page
 All transactions page
 
 <img width="716" alt="Screenshot 2022-09-28 at 15 22 14" src="https://user-images.githubusercontent.com/39365725/192777396-19d4097c-835d-4ddc-9219-4b8a2a9c3055.png">
+
+In app notifications
+
+<img width="716" alt="Screenshot 2022-09-28 at 15 22 14" src="https://user-images.githubusercontent.com/39365725/192777396-19d4097c-835d-4ddc-9219-4b8a2a9c3055.png">
