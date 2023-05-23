@@ -69,7 +69,8 @@ Home page
 
 Top account page
 
-<img width="1439" alt="Screenshot 2022-09-28 at 15 18 45" src="https://user-images.githubusercontent.com/39365725/192776810-751c7ab7-feef-4c50-bc45-45f1ba78a21b.png">
+<img width="1434" alt="Screenshot 2023-05-23 at 09 20 04" src="https://github.com/Mutuba/MpesaMock/assets/39365725/a7e0a417-361f-4df3-8b6d-38f75d6e828d">
+
 
 Send money page
 
@@ -77,8 +78,10 @@ Send money page
 
 All transactions page
 
-<img width="716" alt="Screenshot 2022-09-28 at 15 22 14" src="https://user-images.githubusercontent.com/39365725/192777396-19d4097c-835d-4ddc-9219-4b8a2a9c3055.png">
+<img width="1423" alt="Screenshot 2023-05-23 at 09 21 05" src="https://github.com/Mutuba/MpesaMock/assets/39365725/f87fd3ec-b953-45df-93e1-e4011b54caca">
 
 In app notifications
 
-<img width="716" alt="Screenshot 2022-09-28 at 15 22 14" src="https://user-images.githubusercontent.com/39365725/192777396-19d4097c-835d-4ddc-9219-4b8a2a9c3055.png">
+<img width="564" alt="Screenshot 2023-05-23 at 09 22 12" src="https://github.com/Mutuba/MpesaMock/assets/39365725/9642202f-8541-4cc0-9d16-ff4caa93d6d7">
+
+
