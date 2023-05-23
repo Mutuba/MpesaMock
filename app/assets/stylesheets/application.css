@@ -62,3 +62,7 @@ body {
 a {
   text-decoration: none;
 }
+
+.equal-margin-bottom {
+  margin-bottom: 15px;
+}
