@@ -5,7 +5,7 @@ class SendMoneyMpesaTransactionService < ApplicationService
   attr_reader :amount, :receiver, :sender, :success, :error
 
   def initialize(params)
-    @amount = params[:amount]
+    @amount = params[:amount].to_f
     @receiver = params[:receiver]
     @sender = params[:sender]
     @sender_account = params[:sender]&.mpesa_account
@@ -32,8 +32,8 @@ class SendMoneyMpesaTransactionService < ApplicationService
   private
 
   def validate_sender_balance
-    raise StandardError, 'Insufficient funds to complete transaction' if (@sender_account.available_balance.to_i.zero? ||
-      @amount > @sender_account.available_balance.to_i)
+    raise StandardError, 'Insufficient funds to complete transaction' if @sender_account.available_balance.to_i.zero? ||
+                                                                         @amount > @sender_account.available_balance.to_i
   end
 
   def create_transaction
