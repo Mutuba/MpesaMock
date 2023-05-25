@@ -36,9 +36,9 @@ class MpesaTransaction < ApplicationRecord
   has_noticed_notifications
 
   validates :amount, numericality: {
-    in: 1..300_000,
-    only_integer: false,
-    message: '%{value} must be between 1 and 300'
+    greater_than_or_equal_to: 1,
+    less_than_or_equal_to: 300_000,
+    message: '%{value} must be between 1 and 300,000'
   }
 
   def notify_sender

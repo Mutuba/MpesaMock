@@ -4,7 +4,7 @@ class DepositMpesaTransactionService < ApplicationService
   attr_reader :amount, :sender, :success, :error
 
   def initialize(params)
-    @amount = params[:amount].to_i
+    @amount = params[:amount]
     @sender = params[:sender]
   end
 

@@ -5,7 +5,7 @@ class SendMoneyMpesaTransactionService < ApplicationService
   attr_reader :amount, :receiver, :sender, :success, :error
 
   def initialize(params)
-    @amount = params[:amount].to_i
+    @amount = params[:amount]
     @receiver = params[:receiver]
     @sender = params[:sender]
     @sender_account = params[:sender]&.mpesa_account

@@ -14,10 +14,5 @@ class MpesaTransactionNotification < Noticed::Base
   def message
     "#{params[:mpesa_transaction].transaction_code} Confirmed. Ksh #{params[:mpesa_transaction].amount} sent to #{params[:mpesa_transaction].receiver.phone_number}."
   end
-
-  def url
-    mpesa_transaction_details_path(params[:mpesa_transaction])
-  end
-
   # deliver_by :email, mailer: "UserMailer"
 end
