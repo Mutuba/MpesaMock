@@ -44,16 +44,26 @@ class MpesaTransaction < ApplicationRecord
   def notify_sender
     return if complete.nil?
 
-    MpesaTransactionNotification.with(mpesa_transaction: self).deliver_later(sender) if sender.id == receiver.id
+    if sender.id == receiver.id
+      MpesaTransactionNotification.with(
+        mpesa_transaction: self
+      ).deliver_later(sender)
+    end
 
-    SenderMpesaTransactionNotification.with(mpesa_transaction: self).deliver_later(sender) if sender.id != receiver.id
+    if sender.id != receiver.id
+      SenderMpesaTransactionNotification.with(
+        mpesa_transaction: self
+      ).deliver_later(sender)
+    end
   end
 
   def notify_receiver
     return if sender.id == receiver.id
     return if complete.nil?
 
-    ReceiverMpesaTransactionNotification.with(mpesa_transaction: self).deliver_later(receiver)
+    ReceiverMpesaTransactionNotification.with(
+      mpesa_transaction: self
+    ).deliver_later(receiver)
   end
 
   def auto_generate_transaction_ref
