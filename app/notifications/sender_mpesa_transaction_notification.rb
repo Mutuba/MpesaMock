@@ -2,7 +2,6 @@
 
 # ReceiverMpesaTransactionNotification handles sending notifications to the sender of a transaction
 class SenderMpesaTransactionNotification < MpesaTransactionNotification
-  deliver_by :database
 
   def message
     transaction = params[:mpesa_transaction]
