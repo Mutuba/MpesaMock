@@ -19,8 +19,7 @@ class ContactsController < ApplicationController
     render template: 'contacts/search', locals: { users: @users }
   end
 
-  def show
-  end
+  def show; end
 
   private
 

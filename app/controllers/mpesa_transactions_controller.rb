@@ -8,7 +8,10 @@ class MpesaTransactionsController < ApplicationController
   before_action :set_send_money_receiver_account, only: [:transfer]
 
   def index
-    @mpesa_transactions = current_user.all_transactions.order(updated_at: :desc).page(params[:page])
+    @mpesa_transactions = current_user
+                          .all_transactions.order(
+                            updated_at: :desc
+                          ).page(params[:page])
   end
 
   def details
@@ -18,7 +21,8 @@ class MpesaTransactionsController < ApplicationController
   # GET /resource/top_up
   def top_up
     render template: 'mpesa_transactions/top_up', locals: {
-      mpesa_account: @mpesa_account, mpesa_transaction: @mpesa_transaction
+      mpesa_account: @mpesa_account,
+      mpesa_transaction: @mpesa_transaction
     }
   end
 
@@ -44,12 +48,15 @@ class MpesaTransactionsController < ApplicationController
   end
 
   def transfer
-    render template: 'mpesa_transactions/send_money', locals: { mpesa_transaction: @mpesa_transaction }
+    render template: 'mpesa_transactions/send_money',
+           locals: { mpesa_transaction: @mpesa_transaction }
   end
 
   def send_money
     # user may change user phone number
-    @receiver_account_from_form = User.find_by_phone_number(params[:mpesa_transaction][:phone_number])
+    @receiver_account_from_form = User.find_by(
+      phone_number: params[:mpesa_transaction][:phone_number]
+    )
     if @receiver_account_from_form.nil?
       flash[:alert] = 'Oops! Provided phone number not in the list of contacts'
       return redirect_to mpesa_transactions_transfer_path
