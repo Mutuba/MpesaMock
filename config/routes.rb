@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   post 'mpesa_transactions/reverse', to: 'mpesa_transactions#reverse'
   resources :notifications, only: [:index]
   post 'notifications/mark_as_read', to: 'notifications#mark_as_read'
-  resources :contacts, only: %i[index show]
-  get 'contacts/search', to: 'contacts#search'
+  resources :contacts, only: [:index, :show] do
+    collection do
+      get 'search'
+    end
+  end
 end

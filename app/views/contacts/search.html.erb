@@ -1,13 +1,13 @@
 <div class="container d-flex align-items-center justify-content-center">
   <div>
     <% if @users.present? %>
-      <h2>Contact Search Results:</h2>
+      <h2>Search Results:</h2>
       <% @users.each do |user| %>
         <ul class="list-group">
           <li class="list-group-item"> 
             <div id="<%= user.id %>">
               <p class="">
-                <%= link_to user.phone_number, contact_path(id: user.id), class: "" %>
+                <%= link_to user&.phone_number, contact_path(id: user&.id), class: "" %>
               </p>
             </div>
           </li>

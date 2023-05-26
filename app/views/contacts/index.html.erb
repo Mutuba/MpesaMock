@@ -2,10 +2,10 @@
   <div>
     <h1>Search</h1>
 
-    <%= form_tag(contacts_search_path, method: :get) do %>
+    <%= form_tag(search_contacts_path, method: :get) do %>
       <%= text_field_tag :query, params[:query], placeholder: 'Type name to search', class: 'form-control' %>
       <br/>
-      <%= submit_tag 'Search',  class: "btn btn-primary" %>
+      <%= submit_tag 'Search', class: "btn btn-primary" %>
     <% end %>
     <br/>
     <div class="mb-3">
