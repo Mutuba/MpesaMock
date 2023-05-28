@@ -31,10 +31,11 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  validates :password, confirmation: true
+
+  validates :password, confirmation: { presence: true }
 
   validates :phone_number, presence: true
-  validate :phone_number_valid?
+  validate :phone_number_valid?, if: :phone_number
 
   has_one :mpesa_account, dependent: :destroy
   has_many :sent_transactions, class_name: 'MpesaTransaction', foreign_key: 'sender_id'
