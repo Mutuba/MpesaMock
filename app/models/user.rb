@@ -74,6 +74,7 @@ class User < ApplicationRecord
   end
 
   def all_transactions
+    # MpesaTransaction.where('sender_id = ? OR receiver_id = ?', id, id)
     MpesaTransaction.where('sender_id = :user_id OR receiver_id = :user_id', user_id: id)
   end
 end
