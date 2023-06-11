@@ -18,7 +18,6 @@
 #
 #  fk_rails_...  (user_id => users.id)
 #
-# class MpesaAccount
 class MpesaAccount < ApplicationRecord
   belongs_to :user
   validates :user_id, presence: true

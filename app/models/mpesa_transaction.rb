@@ -6,7 +6,7 @@
 #
 #  id               :uuid             not null, primary key
 #  amount           :decimal(8, 2)    default(0.0), not null
-#  complete         :boolean
+#  complete         :boolean          default(FALSE)
 #  transaction_code :string
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
@@ -23,15 +23,14 @@
 #  fk_rails_...  (receiver_id => users.id)
 #  fk_rails_...  (sender_id => users.id)
 #
-# class MpesaTransaction
 class MpesaTransaction < ApplicationRecord
   belongs_to :sender, class_name: 'User'
   belongs_to :receiver, class_name: 'User'
 
   before_create :auto_generate_transaction_ref
 
-  after_create_commit :notify_sender
-  after_create_commit :notify_receiver
+  after_commit :notify_sender
+  after_commit :notify_receiver
 
   has_noticed_notifications
 
@@ -42,7 +41,7 @@ class MpesaTransaction < ApplicationRecord
   }
 
   def notify_sender
-    return if complete.nil?
+    return unless complete
 
     if sender.id == receiver.id
       MpesaTransactionNotification.with(
@@ -58,8 +57,9 @@ class MpesaTransaction < ApplicationRecord
   end
 
   def notify_receiver
+    return unless complete
+
     return if sender.id == receiver.id
-    return if complete.nil?
 
     ReceiverMpesaTransactionNotification.with(
       mpesa_transaction: self

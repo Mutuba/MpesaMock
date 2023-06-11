@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_521_131_735) do
+ActiveRecord::Schema[7.0].define(version: 20_230_611_063_954) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -26,7 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_521_131_735) do
 
   create_table 'mpesa_transactions', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
     t.decimal 'amount', precision: 8, scale: 2, default: '0.0', null: false
-    t.boolean 'complete'
+    t.boolean 'complete', default: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.uuid 'sender_id'

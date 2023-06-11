@@ -88,6 +88,10 @@ group :development do
   # gem "spring"
 end
 
+group :test do
+  gem 'rspec-sidekiq'
+end
+
 gem 'noticed', '~> 1.6'
 gem 'pg_search'
 gem 'rails-erd'

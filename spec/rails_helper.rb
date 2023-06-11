@@ -52,6 +52,12 @@ RSpec.configure do |config|
     end
   end
 
+  config.around(:each, :inline_sidekiq_testing) do |example|
+    Sidekiq::Testing.inline! do
+      example.run
+    end
+  end
+
   config.infer_spec_type_from_file_location!
 
   # Filter lines from Rails gems in backtraces.
