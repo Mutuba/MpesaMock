@@ -52,6 +52,8 @@ RSpec.configure do |config|
     end
   end
 
+  ActiveJob::Base.queue_adapter = :test
+
   config.around(:each, :inline_sidekiq_testing) do |example|
     Sidekiq::Testing.inline! do
       example.run

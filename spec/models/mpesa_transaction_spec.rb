@@ -103,7 +103,7 @@ RSpec.describe MpesaTransaction, type: :model do
     end
 
     describe '#notify_receiver' do
-      it 'sends a notification to the receiver if complete and sender is not the receiver' do        
+      it 'sends a notification to the receiver if complete and sender is not the receiver' do
         expect(ReceiverMpesaTransactionNotification).to receive(:with)
           .with(mpesa_transaction: mpesa_transaction).and_return(double(deliver_later: true))
         mpesa_transaction.notify_receiver
