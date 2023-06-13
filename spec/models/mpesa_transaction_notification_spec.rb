@@ -15,7 +15,7 @@ RSpec.describe MpesaTransactionNotification, type: :notification do
   end
 
   describe 'delivery' do
-    it 'delivers the notification to the database' do
+    it 'database is icluded as delivery method' do
       notification = MpesaTransactionNotification.new(mpesa_transaction: mpesa_transaction)
       expect(notification.delivery_methods[0][:name]).to eq(:database)
     end
