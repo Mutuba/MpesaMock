@@ -20,5 +20,6 @@
 #
 FactoryBot.define do
   factory :mpesa_account do
+    association :user, factory: :user
   end
 end

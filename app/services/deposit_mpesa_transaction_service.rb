@@ -9,14 +9,13 @@ class DepositMpesaTransactionService < ApplicationService
   end
 
   def call
-    ActiveRecord::Base.transaction do
+    begin
       mpesa_transaction = create_transaction
       update_balance(mpesa_transaction)
       mark_transaction_completed(mpesa_transaction)
 
       OpenStruct.new(success: true, error: nil)
     rescue StandardError => e
-      ActiveRecord::Base.connection.rollback_db_transaction
       OpenStruct.new(success: false, error: e.message)
     end
   end
