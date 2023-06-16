@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # spec/services/deposit_mpesa_transaction_service_spec.rb
 require 'rails_helper'
 
@@ -8,17 +10,17 @@ RSpec.describe DepositMpesaTransactionService do
   describe '#call' do
     context 'when the transaction is successful' do
       it 'creates a new MpesaTransaction' do
-        expect {
+        expect do
           described_class.new(params).call
-        }.to change(MpesaTransaction, :count).by(1)
+        end.to change(MpesaTransaction, :count).by(1)
       end
 
-      it 'updates the sender\'s available balance' do                
+      it 'updates the sender\'s available balance' do
         sender = create(:user)
 
-        expect {
+        expect do
           described_class.new(params.merge(sender: sender)).call
-        }.to change { sender.mpesa_account.reload.available_balance }.by(100)
+        end.to change { sender.mpesa_account.reload.available_balance }.by(100)
       end
 
       it 'returns a success status' do

@@ -9,15 +9,13 @@ class DepositMpesaTransactionService < ApplicationService
   end
 
   def call
-    begin
-      mpesa_transaction = create_transaction
-      update_balance(mpesa_transaction)
-      mark_transaction_completed(mpesa_transaction)
+    mpesa_transaction = create_transaction
+    update_balance(mpesa_transaction)
+    mark_transaction_completed(mpesa_transaction)
 
-      OpenStruct.new(success: true, error: nil)
-    rescue StandardError => e
-      OpenStruct.new(success: false, error: e.message)
-    end
+    OpenStruct.new(success: true, error: nil)
+  rescue StandardError => e
+    OpenStruct.new(success: false, error: e.message)
   end
 
   private
@@ -28,7 +26,9 @@ class DepositMpesaTransactionService < ApplicationService
 
   def update_balance(transaction)
     mpesa_account = sender&.mpesa_account
-    mpesa_account.update!(available_balance: mpesa_account.available_balance.to_f + transaction.amount.to_f)
+    mpesa_account.update!(
+      available_balance: mpesa_account.available_balance.to_f + transaction.amount.to_f
+    )
   end
 
   def mark_transaction_completed(transaction)
