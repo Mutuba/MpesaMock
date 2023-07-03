@@ -23,10 +23,12 @@ class SendMoneyMpesaTransactionService < ApplicationService
       mark_transaction_completed(mpesa_transaction)
 
       OpenStruct.new(success: true, error: nil)
-    rescue StandardError => e
-      ActiveRecord::Base.connection.rollback_db_transaction
-      OpenStruct.new(success: false, error: e.message)
     end
+  rescue ActiveRecord::RecordInvalid => e
+    OpenStruct.new(success: false, error: e.message)
+  rescue StandardError => e
+    Rails.logger.error(e.message)
+    OpenStruct.new(success: false, error: 'An error occurred')
   end
 
   private

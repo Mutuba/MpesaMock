@@ -8,7 +8,6 @@ RSpec.describe DepositMpesaTransactionService do
   let(:params) { { amount: 100, sender: sender } }
 
   describe '#call' do
-    context 'when the transaction is successful' do
       it 'creates a new MpesaTransaction' do
         expect do
           described_class.new(params).call
